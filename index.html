@@ -351,7 +351,7 @@
 <script>
   // Registro do convite (Apps Script da clínica). O link de cada paciente é comunidade.isabellaeleuterio.com.br/?c=<lead>-<assinatura>.
   // Quem abre a página: "abriu". Quem toca no botão: "clicou" (sai dos lembretes). Sem ?c=, a página só leva à comunidade.
-  var REGISTRO = "https://script.google.com/macros/s/PREENCHER/exec";
+  var REGISTRO = "https://script.google.com/macros/s/AKfycbwDVB4wBNkK_oG-UJsJCnFAShOcN_OtUaEpx5Boe21F6-_c8U3TDB1CkBBM2FxxBe7jag/exec";
   var codigo = new URLSearchParams(location.search).get("c") || "";
   var valido = /^\d+-[0-9a-f]{12}$/.test(codigo) && REGISTRO.indexOf("PREENCHER") < 0 && !/bot|crawler|spider|preview|whatsapp|facebookexternalhit/i.test(navigator.userAgent);
 
