@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comunidade VIP 🤎 · Clínica Isabella Eleutério</title>
+<meta name="description" content="Novidades, conteúdos exclusivos e condições especiais em primeira mão.">
+<meta property="og:title" content="Comunidade VIP 🤎 · Clínica Isabella Eleutério">
+<meta property="og:description" content="Novidades, conteúdos exclusivos e condições especiais em primeira mão.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f5ede6">
+<link rel="icon" href="logo.svg">
+<style>
+  :root{--fundo:#f5ede6;--card:#fff;--texto:#734136;--suave:#8a6a5e;--borda:#ecdfd5;--cobre:#b7865d;--whatsapp:#25d366;--whatsapp-escuro:#1ebe5b}
+  @media (prefers-color-scheme:dark){:root{--fundo:#2a1d19}}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;background:var(--fundo);color:var(--texto);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  main{width:100%;max-width:420px;background:var(--card);border:1px solid var(--borda);border-radius:24px;padding:36px 28px 28px;text-align:center}
+  .logo{display:block;width:230px;max-width:75%;height:auto;margin:0 auto 28px}
+  h1{font-size:24px;line-height:1.25;margin:0 0 10px;font-weight:600}
+  p{color:var(--suave);margin:0 0 22px}
+  ul{list-style:none;padding:0;margin:0 0 28px;text-align:left}
+  li{padding:11px 0;border-top:1px solid var(--borda)}
+  li:before{content:"✦";color:var(--cobre);margin-right:10px}
+  a.botao{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--whatsapp);color:#fff;text-decoration:none;font-weight:700;padding:16px;border-radius:14px;font-size:17px}
+  a.botao:hover{background:var(--whatsapp-escuro)}
+  a.botao svg{width:24px;height:24px;flex:none}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="logo.svg" alt="Clínica Isabella Eleutério · Dermatologia, Estética, Saúde">
+  <h1>Comunidade VIP 🤎</h1>
+  <p>Um espaço no WhatsApp para quem é paciente da clínica, com novidades, conteúdos exclusivos e condições especiais em primeira mão.</p>
+  <ul>
+    <li>Novidades da clínica em primeira mão</li>
+    <li>Conteúdos exclusivos</li>
+    <li>Condições especiais para a comunidade</li>
+  </ul>
+  <a class="botao" id="entrar" href="https://chat.whatsapp.com/C74lH5ctzKZGmLxeMqt7ho">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.43-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.02-17.46A11.27 11.27 0 0 0 12.05.72C5.8.72.72 5.8.72 12.05c0 2 .52 3.95 1.52 5.66L.62 23.28l5.7-1.5a11.3 11.3 0 0 0 5.42 1.38h.01c6.25 0 11.33-5.08 11.33-11.33 0-3.03-1.18-5.87-3.32-8.01z"/></svg>
+    Entrar na comunidade
+  </a>
+</main>
+<script>
+  // Registro do convite (Apps Script da clínica). O link de cada paciente é vip.isabellaeleuterio.com.br/?c=<lead>-<assinatura>.
+  // Quem abre a página: "abriu". Quem toca no botão: "clicou" (sai dos lembretes). Sem ?c=, a página só leva à comunidade.
+  var REGISTRO = "https://script.google.com/macros/s/PREENCHER/exec";
+  var codigo = new URLSearchParams(location.search).get("c") || "";
+  var valido = /^\d+-[0-9a-f]{12}$/.test(codigo) && REGISTRO.indexOf("PREENCHER") < 0 && !/bot|crawler|spider|preview|whatsapp|facebookexternalhit/i.test(navigator.userAgent);
+
+  function avisar(evento) {
+    if (!valido) return;
+    var corpo = JSON.stringify({ c: codigo, evento: evento });
+    try {
+      if (navigator.sendBeacon && navigator.sendBeacon(REGISTRO, new Blob([corpo], { type: "text/plain" }))) return;
+    } catch (e) {}
+    fetch(REGISTRO, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain" }, body: corpo }).catch(function () {});
+  }
+
+  avisar("abriu");
+  document.getElementById("entrar").addEventListener("click", function () { avisar("clicou"); });
+</script>
+</body>
+</html>
